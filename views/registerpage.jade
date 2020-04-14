@@ -1,0 +1,22 @@
+html
+  head
+    title!= title
+    meta(charset='utf-8')
+    meta(name='description')
+    meta(name='keywords')
+    meta(name='author')
+
+    style
+      include css/style.css
+  body
+    h1 用户注册
+    .w3ls-login.box
+      div#reg
+        form(action='/register', method='post')
+          .agile-field-txt
+            input(type='text', required='', placeholder='请输入用户名', name='username')
+          .agile-field-txt
+            input#myInput(type='password', required='', placeholder='请输入密码', name='pwd')
+          .w3ls-bot
+            input(type='submit',value='注册')
+

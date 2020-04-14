@@ -1,0 +1,43 @@
+html
+  head
+    title!= title
+    meta(charset='utf-8')
+    meta(name='description')
+    meta(name='keywords')
+    meta(name='author')
+    script.
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    style
+      include css/style.css
+  body
+    h1 电 影 推 荐 系 统
+    .w3ls-login.box
+
+        div#log
+            form(action='/login', method='post')
+                .agile-field-txt
+                    input(type='text', required='', placeholder='请输入用户名', name='username')
+                .agile-field-txt
+                    input#myInput(type='password', required='', placeholder='请输入密码', name='pwd')
+                .agile_label
+                    input#check3(type='checkbox', value='show password', name='check3')
+                    label.check(for='check3') 记住我
+                .w3ls-bot
+                    input(type='submit', value='登录')
+                    input(type='button', value='注册',onclick='location.href=("/registerpage")')
+
+                    //<input type="button" onclick='location.href=("index.aspx")' />//在本页面打开
+                    //<input type="button" onclick='window.open("bedzhao.aspx")' />//打开新页面
+
+            //a(href='/',title='主页')返回主页
+
+
+
+
+
+

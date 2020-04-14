@@ -1,0 +1,144 @@
+html
+  head
+    title!=title    
+    meta(charset='utf-8')
+    meta(name='description')
+    meta(name='keywords')
+    meta(name='author')
+    link(rel='shortcut icon', href='http://eduppp.cn/images/logo4.gif')
+    link(rel='apple-touch-icon', href='http://eduppp.cn/images/logo.gif')
+    //link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+    //link(href='/bootstrap/css/bootstrap.css', rel='stylesheet')
+    style
+      include css/index.css
+      include bootstrap/css/bootstrap.css
+    style(type='text/css').
+      #frame {/*----------图片轮播相框容器----------*/
+      position: absolute; /*--绝对定位，方便子元素的定位*/
+      width: 1500px;
+      height: 75%;
+      overflow: hidden;/*--相框作用，只显示一个图片---*/
+      border-radius:5px;
+      }
+      #dis {/*--绝对定位方便li图片简介的自动分布定位---*/
+      position: absolute;
+      left: -50px;
+      top: -10px;
+      opacity: 0.5;
+      }
+      #dis li {
+      display: inline-block;
+      width: 200px;
+      height: 25px;
+      margin: 0 650px;
+      float: left;
+      text-align: center;
+      color: #000;
+      border-radius: 10px;
+      background: #ffffff;
+      }
+      #photos img {
+      float: left;
+      width:1500px;
+      height:75%;
+      }
+      #photos {/*---设置总的图片宽度--通过位移来达到轮播效果----*/
+      position: absolute;z-index:9px;
+      width: calc(1500px * 5);/*---修改图片数量的话需要修改下面的动画参数*/
+      }
+      .play{
+      animation: ma 20s ease-out infinite alternate;/**/
+      }
+      @keyframes ma {/*---每图片切换有两个阶段：位移切换和静置。中间的效果可以任意定制----*/
+      0%,20% {		margin-left: 0px;		}
+      25%,40% {		margin-left: -1500px;	}
+      45%,60% {		margin-left: -3000px;	}
+      65%,80% {		margin-left: -4500px;	}
+      85%,100% {		margin-left: -6000px;	}
+      }
+      .num{
+      position:absolute;z-index:10;
+      display:inline-block;
+      right:10px;top:550px;
+      border-radius:100%;
+      background: #ffffff;
+      width:50px;height:50px;
+      line-height:50px;
+      cursor:pointer;
+      color:#fff;
+      background-clor:rgba(0,0,0,0.5);
+      text-align:center;
+      opacity:0.8;
+      }
+      .num:hover{background:#000;}
+      .num:hover,#photos:hover{animation-play-state:paused;}
+      .num:nth-child(2){margin-right:60px}
+      .num:nth-child(3){margin-right:120px}
+      .num:nth-child(4){margin-right:180px}
+      .num:nth-child(5){margin-right:240px}
+      #a1:hover ~ #photos{animation: ma1 .5s ease-out forwards;}
+      #a2:hover ~ #photos{animation: ma2 .5s ease-out forwards;}
+      #a3:hover ~ #photos{animation: ma3 .5s ease-out forwards;}
+      #a4:hover ~ #photos{animation: ma4 .5s ease-out forwards;}
+      #a5:hover ~ #photos {animation: ma5 .5s ease-out forwards;}
+      @keyframes ma1 {0%{margin-left:-1200px;}100%{margin-left:-0px;}	}
+      @keyframes ma2 {0%{margin-left:-1200px;}100%{margin-left:-1500px;}	}
+      @keyframes ma3 {100%{margin-left:-3000px;}	}
+      @keyframes ma4 {100%{margin-left:-4500px;}	}
+      @keyframes ma5 {100%{margin-left:-6000px;}	}
+
+
+  body
+
+    // 导航条
+    // Button trigger modal
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      a.col-2(href='')
+      //img(src='../../img/movie.png', style='height: 45px;width: 45px;margin-left: 60px')
+      a(style='color:#707070') ❀
+      a.navbar-brand(href='#') 电影推荐
+      // 搜索
+      a.col-2(href='')
+      form.form-inline.my-2.my-lg-0
+        input.form-control.mr-sm-2(type='search', placeholder='搜索电影', aria-label='Search')
+        //input(type='image', src='/public/images/search.png', name='img', style='width: 40px;height: 40px')
+        a(href='#',style='color:#707070') 搜索
+      // 头像+用户名
+      a.col-2(href='')
+      a(href='#', style='color:#707070',onclick="window.location='loginpage'") 登录
+      a(href='#',style='color:#707070', onclick="window.location='registerpage'") /注册
+            //a(href='#', style='color:#707070') 登录/注册
+
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNavAltMarkup', aria-controls='navbarNavAltMarkup', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+
+
+    //div#navigation 电影推荐系统
+    //  div#logreg
+    //    input(type='submit',value='登录',onclick="window.location='/loginpage'")
+    //    input(type='submit', value='注册',onclick="window.location='/registerpage'")
+    div#mid
+      #frame
+        a#a5.num 5
+        a#a4.num 4
+        a#a3.num 3
+        a#a2.num 2
+        a#a1.num 1
+        #photos.play
+          img(src='https://01.minipic.eastday.com/20190712/20190712115013_46eff84ab70374783c3b4f7280e288ca_1.jpeg')
+          img(src='http://file2.desktx.com/pc/wallpaper/2014/12/50a9e339010dc.jpg')
+          img(src='https://c-ssl.duitang.com/uploads/blog/201512/07/20151207160558_ry5Bx.thumb.1000_0.jpeg')
+          img(src='http://www2.ppdesk.com/file/20100120/desk/2012/04/22/Titanic_14_1920x1200_ki9w.jpg')
+          img(src='https://img.zcool.cn/community/0147f6554481af0000019ae9f65d6a.jpg@1280w_1l_2o_100sh.jpg')
+          //ul#dis
+            //li 哪吒之魔童降世
+            //li 复仇者联盟
+            //li 冰雪奇緣
+            //li 泰坦尼克號
+            //li 沉睡魔咒
+
+
+    footer.footer(style='margin-top: 0px')
+        p 基于大数据技术的电影推荐系统
+        a(href='#') Back to top
+      
