@@ -36,7 +36,7 @@ html
                 -for(var i=0;i<movieforpage.length;i++)
                     td
                         input(type='text', style="visibility: hidden;width:0px; height:0px;", name='movieid', value=movieforpage[i].movieid)
-                        img(src=movieforpage[i].picture, style="height:300px; ")
+                        img(src=movieforpage[i].picture)
                         p(style="overflow: hidden") #{movieforpage[i].moviename}
                         select(name='moviescore')
                             option(value=1) 1

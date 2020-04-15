@@ -62,7 +62,7 @@ app.use(bodyParser.json())
  */
 var connection = mysql.createConnection({
     host     : '127.0.0.1',
-    user     : 'root',
+    user     : 'test',
     password : '0000',
     database : 'movierecommend',
     port:'3306'
@@ -159,7 +159,7 @@ app.post('/register',function (req,res) {
     connection.query('insert into user set ?',user,function (err,rs) {
         if (err) throw  err;
         console.log('register success');
-        res.render('loginpage',{title:'注册成功'});
+        res.render('loginpage',{title:'注册成功'});//注册成功跳转登陆页面
     })
 })
 
@@ -208,21 +208,23 @@ app.post('/submituserscore',function (req,res) {
             console.log('insert into personalrating success');
         });
     }
-    var selectUserIdNameSQL='select userid,username from user where userid='+userid;
-    connection.query(selectUserIdNameSQL,function(err,rows,fields){
-        if (err) throw  err;
-        res.render('userscoresuccess',{title:'Personal Rating Success',user:rows[0]});
-    });
 
-});
+
+    // var selectUserIdNameSQL='select userid,username from user where userid='+userid;
+    // connection.query(selectUserIdNameSQL,function(err,rows,fields){
+    //     if (err) throw  err;
+    //     // res.render('recommendresult',{title:'Personal Rating Success',user:rows[0],message: 'this is recommend for you',username:username,movieinfo:movieinfolist});//跳转合并函数
+    // });
+
+//});//跳转合并函数
 
 /**
  * 调用Spark程序为用户推荐电影并把推荐结果写入数据库,把推荐结果显示到网页
  */
-app.get('/recommendmovieforuser',function (req,res) {
-    //console.log('result point 1');
-    const userid=req.query.userid;
-    const username=req.query.username;
+// app.get('/recommendmovieforuser',function (req,res) {//跳转合并函数
+//     //console.log('result point 1');
+//     const userid=req.query.userid;//跳转合并函数
+    //const username=req.query.username;
     //console.log('recommendation userid is:'+userid);
     const path = '/input_spark';
     //调用Spark程序为用户推荐电影并把推荐结果写入数据库
@@ -254,7 +256,13 @@ app.get('/recommendmovieforuser',function (req,res) {
         //   console.log('picture is:'+movieinfolist[item].picture);
         //}
 
-        res.render('recommendresult', {title: 'Recommend Result', message: 'this is recommend for you',username:username,movieinfo:movieinfolist})
+        var selectUserIdNameSQL='select userid,username from user where userid='+userid;
+        connection.query(selectUserIdNameSQL,function(err,rows,fields){
+            if (err) throw  err;
+            // res.render('recommendresult',{title:'Personal Rating Success',user:rows[0],message: 'this is recommend for you',movieinfo:movieinfolist});//传用户
+            res.render('recommendresult',{title:'Personal Rating Success',username:rows[0].username,userid:rows[0].userid,message: 'this is recommend for you',movieinfo:movieinfolist});//id name分开传
+        });
+        // res.render('recommendresult', {title: 'Recommend Result', message: 'this is recommend for you',username:username,movieinfo:movieinfolist})
     });
 
 })
