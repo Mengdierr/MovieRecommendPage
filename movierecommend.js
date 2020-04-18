@@ -1,46 +1,3 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
-var movierecommend = express();
-
-// view engine setup
-movierecommend.set('views', path.join(__dirname, 'views'));
-movierecommend.set('view engine', 'pug');
-
-movierecommend.use(logger('dev'));
-movierecommend.use(express.json());
-movierecommend.use(express.urlencoded({ extended: false }));
-movierecommend.use(cookieParser());
-movierecommend.use(express.static(path.join(__dirname, 'public')));
-
-movierecommend.use('/', indexRouter);
-movierecommend.use('/users', usersRouter);
-
-// catch 404 and forward to error handler
-movierecommend.use(function(req, res, next) {
-    next(createError(404));
-});
-
-// error handler
-movierecommend.use(function(err, req, res, next) {
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-    // render the error page
-    res.status(err.status || 500);
-    res.render('error');
-});
-
-module.exports = movierecommend;
-
-
 
 /**
  * express接收html传递的参数
@@ -52,17 +9,19 @@ const spawnSync = require('child_process').spawnSync;
 var  app=express();
 var mysql=require('mysql');
 var http = require("http");
-app.set('view engine', 'jade');
+app.set('view engine', 'jade');//替換為123
 app.set('views', './views');
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
+app.use(express.static('./views'));//nodejs+express使用html和jade,views放靜態文件html
+
 
 /**
  * 配置MySQL
  */
 var connection = mysql.createConnection({
     host     : '127.0.0.1',
-    user     : 'test',
+    user     : 'root',
     password : '0000',
     database : 'movierecommend',
     port:'3306'

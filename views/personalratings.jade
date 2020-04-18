@@ -1,32 +1,29 @@
 html
-    head
-        title!= titlestyle
-        style
-            include css/index.css
-            include bootstrap/css/bootstrap.css
+  head
+     title!= titlestyle
+     style
+         include css/index.css
+         include bootstrap/css/bootstrap.css
 
-
-    body
+  body
+    // 导航条
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
         a.col-2(href='')
-        //img(src='../../img/movie.png', style='height: 45px;width: 45px;margin-left: 60px')
-        a(style='color:#707070') ❀
+        img(src='../img/movieblue.png', style='height: 45px;width: 45px;margin-left: 60px')
+        //a(style='color:#707070') ❀
         a.navbar-brand(href='#') 电影推荐
-        // 搜索
-        a.col-2(href='')
-        form.form-inline.my-2.my-lg-0
-            input.form-control.mr-sm-2(type='search', placeholder='搜索电影', aria-label='Search')
-            //input(type='image', src='/public/images/search.png', name='img', style='width: 40px;height: 40px')
-            a(href='#',style='color:#707070') 搜索
+        //.navbar-nav
+            //jade跳转未解决
+        a.nav-item.nav-link(href='#',style='color:#707070') 主页
+        a(href='movietype.html',style='color:#707070') 分析展示
+        a.nav-item.nav-link(style='color:#000000') 电影评分
 
-        a.col-2
-            a(style='color:#707070') 用户名：#{username}
-        //a(href='#', style='color:#707070',onclick="window.location='loginpage'") 登录
-        //a(href='#',style='color:#707070', onclick="window.location='registerpage'") /注册
-        //    //a(href='#', style='color:#707070') 登录/注册
+        a.col-4(href='')
+        a(style='color:#707070') 用户名：#{username}
 
-        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNavAltMarkup', aria-controls='navbarNavAltMarkup', aria-expanded='false', aria-label='Toggle navigation')
-            span.navbar-toggler-icon
+
+        //button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNavAltMarkup', aria-controls='navbarNavAltMarkup', aria-expanded='false', aria-label='Toggle navigation')
+        //    span.navbar-toggler-icon
 
     //h1 热烈欢迎用户: #{username},请您为以下电影打分:
     form(action='/submituserscore', method='post')

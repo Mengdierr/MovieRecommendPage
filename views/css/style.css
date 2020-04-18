@@ -78,10 +78,11 @@ img {
 /*--end reset--*/
 
 body {
+    background-image:url(https://img9.51tietu.net/pic/2019-091100/txq1psskyt2txq1psskyt2.jpg);
     font-family: 'Catamaran', sans-serif;
     font-size: 100%;
-    background: linear-gradient(to left top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
-    background-size: cover;
+    /*background: linear-gradient(to left top, #051937, #004d7a, #008793, #00bf72, #a8eb12);*/
+    /*background-size: cover;*/
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -105,13 +106,13 @@ body {
     -webkit-justify-content: center;
     justify-content: center;
 }
-
+/*電影推薦系統*/
 h1 {
     font-size: 2.8em;
-    font-weight: 300;
+    /*font-weight: 300;*/
     text-transform: capitalize;
     color: #fff;
-    text-shadow: 1px 1px 1px #000;
+    text-shadow: 1px 1px 1px #2c8599;
     letter-spacing: 2px;
     margin: 1.2em 1vw;
     text-align: center;
@@ -128,7 +129,7 @@ h2 {
     text-align: center;
     font-family: 'Catamaran', sans-serif;
 }
-
+/*框*/
 .w3ls-login form {
     max-width: 500px;
     margin: 0 5vw;
@@ -138,7 +139,7 @@ h2 {
     display: flex;
     display: -webkit-flex;
     flex-wrap: wrap;
-    background: rgba(252, 254, 255, 0.11);
+    background: rgba(27, 167, 157, 0.11);
 }
 
 .agile-field-txt {
@@ -179,8 +180,9 @@ h2 {
 .check1 {
     text-align: left;
 }
+/*記住我*/
 label.check {
-    color: #ededed;
+    color: #f0f3f3;
     letter-spacing: 1px;
     font-size: 15px;
     display: inline-block;
